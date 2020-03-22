@@ -13,6 +13,10 @@ services:
       - POSTGRES_DB=notes
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  redis:
+    image: "redis:alpine"
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -22,3 +26,45 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - redis
+  front:
+    build:
+      context: .
+      dockerfile: vue.Dockerfile
+#    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./front/notes_app:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - web
+  celery:
+    build: .
+    command: celery -A notes worker -l info --uid=nobody --gid=nogroup
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+  celery-beat:
+    build: .
+    command: celery -A notes beat -l info --uid=nobody --gid=nogroup
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+  cypress:
+    # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
+    image: "cypress/included:3.2.0"
+    depends_on:
+      - front
+    environment:
+      # pass base url to test pointing at the web application
+      - CYPRESS_baseUrl=http://front:8080
+      - DISPLAY=host.docker.internal:0
+    # share the current folder as volume to avoid copying
+    working_dir: /e2e
+    volumes:
+      - ./front:/e2e
+      -  /tmp/.X11-unix:/tmp/.X11-unix
