@@ -44,8 +44,6 @@
     </div>
 </template>
 <script>
-    /* eslint-disable no-unused-vars */
-
     import axios from 'axios';
     import datetime from "vuejs-datetimepicker";
     import moment from 'moment';
@@ -68,10 +66,10 @@
         mounted() {
             axios.get(`http://127.0.0.1:8000/api/notes/${this.$route.params.id}/`)
                 .then(response => {
-                    response.data.expiration_date = moment(Date.parse(response.data.expiration_date)).format("YYYY-MM-DD HH:mm")
+                    response.data.expiration_date = moment(Date.parse(response.data.expiration_date)).format("YYYY-MM-DD HH:mm");
                     this.note = response.data
                 }).catch(errors => {
-                alert(errors.response.data.detail)
+                alert(errors.response.data.detail);
                 router.push('/')
             });
         },
@@ -83,17 +81,14 @@
                             name: this.note.name,
                             text: this.note.text,
                             expiration_date: moment(Date.parse(this.note.expiration_date)).utc().format("YYYY-MM-DD HH:mm")
-                        }, {headers: {'Authorization': `Token ${this.$store.state.token}`}}
+                        }
                     )
                     .then(() => {
                         this.$router.push('/');
                     }).catch(errors => {
-                    console.log(errors)
                     this.errors = errors.response.data;
-                    console.log(this.errors)
                 })
             }
         },
     }
-    /* eslint-enable no-unused-vars */
 </script>

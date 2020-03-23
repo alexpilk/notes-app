@@ -67,14 +67,12 @@
                             name: this.note.name,
                             text: this.note.text,
                             expiration_date: moment(Date.parse(this.note.expiration_date)).utc().format("YYYY-MM-DD HH:mm")
-                        }, {headers: {'Authorization': `Token ${this.$store.state.token}`}}
+                        }
                     )
                     .then(() => {
                         this.$router.push('/');
                     }).catch(errors => {
-                    console.log(errors)
                     this.errors = errors.response.data;
-                    console.log(this.errors)
                 })
             }
         },

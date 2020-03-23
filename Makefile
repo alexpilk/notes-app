@@ -3,14 +3,14 @@ IP := $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 pip-compile:
 	docker-compose run --rm pip-tools
 
-build:
-	docker-compose build web
+migrate:
+	docker-compose run --rm web python manage.py migrate
 
-test:
-	docker-compose run --rm app python -m pytest /code/ --flake8
+test-backend:
+	docker-compose run --rm web python -m pytest /code/notes_app --flake8
 
 run:
-	docker-compose up web
+	docker-compose up web front celery celery-beat
 
 test-front-interactive:
 	./cypress-interactive.sh

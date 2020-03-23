@@ -1,8 +1,13 @@
-# subscriptions/views.py
+from datetime import datetime, timezone
+
+from rest_framework import generics
+
 from .models import Note
 from .serializers import NoteSerializer
-from rest_framework import generics
-from datetime import datetime, timezone
+
+
+def current_datetime():
+    return datetime.now(timezone.utc)
 
 
 class NoteList(generics.ListCreateAPIView):
@@ -10,7 +15,10 @@ class NoteList(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
 
     def filter_queryset(self, queryset):
-        return queryset.filter(author=self.request.user.id, expiration_date__gt=datetime.now(timezone.utc))
+        return queryset.filter(
+            author=self.request.user.id,
+            expiration_date__gt=current_datetime()
+        )
 
     def create(self, request, *args, **kwargs):
         request.data['author'] = self.request.user.id
@@ -22,4 +30,7 @@ class NoteDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NoteSerializer
 
     def filter_queryset(self, queryset):
-        return queryset.filter(author=self.request.user.id, expiration_date__gt=datetime.now(timezone.utc))
+        return queryset.filter(
+            author=self.request.user.id,
+            expiration_date__gt=current_datetime()
+        )

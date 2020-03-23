@@ -5,3 +5,6 @@ django-rest-registration
 psycopg2
 celery
 redis
+pytest
+pytest-django
+pytest-flake8

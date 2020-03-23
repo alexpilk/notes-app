@@ -1,4 +1,4 @@
-describe('My First Test', function () {
+describe('Login Test', function () {
         beforeEach(() => {
             cy.server();
             cy.visit('/', {

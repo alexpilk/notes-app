@@ -1,4 +1,4 @@
-describe('My First Test', function () {
+describe('Index Page Test', function () {
         beforeEach(() => {
             cy.server()
         });

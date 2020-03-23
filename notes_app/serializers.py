@@ -1,4 +1,3 @@
-# subscriptions/serializers.py
 from datetime import datetime, timezone
 
 from rest_framework import serializers
@@ -17,5 +16,7 @@ class NoteSerializer(serializers.ModelSerializer):
     @staticmethod
     def validate_expiration_date(expiration_date):
         if expiration_date < datetime.now(timezone.utc):
-            raise serializers.ValidationError("The date cannot be in the past!")
+            raise serializers.ValidationError(
+                "The date cannot be in the past!"
+            )
         return expiration_date
