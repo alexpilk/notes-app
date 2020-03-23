@@ -4,7 +4,7 @@ pip-compile:
 	docker-compose run --rm pip-tools
 
 migrate:
-	docker-compose run --rm web python manage.py migrate
+	docker-compose up -d db && docker-compose run --rm web python manage.py migrate
 
 test-backend:
 	docker-compose run --rm web python -m pytest /code/notes_app --flake8
