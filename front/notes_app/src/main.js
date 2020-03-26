@@ -9,6 +9,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import {ValidationProvider} from 'vee-validate';
 import axios from 'axios';
 
+axios.defaults.baseURL = 'http://34.89.148.120:8000/';  // I know it should be in env, don't beat me :D
+
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;

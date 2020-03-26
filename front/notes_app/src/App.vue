@@ -27,7 +27,7 @@
         methods: {
             logout: function () {
 
-                axios.post('http://127.0.0.1:8000/api/accounts/logout/', {})
+                axios.post('api/accounts/logout/', {})
                     .then(() => {
                         this.$store.commit('LOGOUT_SUCCESS');
                         this.$router.push('/login');
