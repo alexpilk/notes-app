@@ -3,8 +3,8 @@ FROM node:lts-alpine
 # make the 'app' folder the current working directory
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
-COPY front/notes_app/package*.json ./
+# copy source code
+COPY front/notes_app/ ./
 
 # install project dependencies
 RUN npm install

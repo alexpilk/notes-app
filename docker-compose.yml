@@ -31,11 +31,8 @@ services:
     build:
       context: .
       dockerfile: vue.Dockerfile
-#    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./front/notes_app:/app
     ports:
-      - "8080:8080"
+      - "80:8080"
     depends_on:
       - web
   celery:
@@ -48,7 +45,7 @@ services:
       - redis
   celery-beat:
     build: .
-    command: celery -A notes beat -l info --uid=nobody --gid=nogroup
+    command: celery -A notes beat -l info --pidfile /tmp/celerybeat.pid --uid=nobody --gid=nogroup -s /tmp/celerybeat-schedule
     volumes:
       - .:/code
     depends_on:
