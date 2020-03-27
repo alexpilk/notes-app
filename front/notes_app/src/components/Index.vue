@@ -38,14 +38,14 @@
             },
             deleteNote: function (note) {
                 if (confirm('Delete ' + note.name)) {
-                    axios.delete(`http://127.0.0.1:8000/api/notes/${note.id}/`)
+                    axios.delete(`api/notes/${note.id}/`)
                         .then(() => {
                             this.all();
                         });
                 }
             },
             all: function () {
-                axios.get('http://127.0.0.1:8000/api/notes/', {headers: {'Authorization': `Token ${this.$store.state.token}`}})
+                axios.get('api/notes/', {headers: {'Authorization': `Token ${this.$store.state.token}`}})
                     .then(response => {
                         this.notes = response.data
                     });

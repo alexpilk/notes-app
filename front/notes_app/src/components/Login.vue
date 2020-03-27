@@ -70,7 +70,7 @@
                     return;
                 }
                 axios
-                    .post(`http://127.0.0.1:8000/api/accounts/login/`, this.user).then(response => {
+                    .post(`api/accounts/login/`, this.user).then(response => {
                     if (response.status == 400) {
                         this.errors.push(response.data);
                         console.log(this.errors)

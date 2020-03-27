@@ -64,7 +64,7 @@
             }
         },
         mounted() {
-            axios.get(`http://127.0.0.1:8000/api/notes/${this.$route.params.id}/`)
+            axios.get(`api/notes/${this.$route.params.id}/`)
                 .then(response => {
                     response.data.expiration_date = moment(Date.parse(response.data.expiration_date)).format("YYYY-MM-DD HH:mm");
                     this.note = response.data
@@ -76,7 +76,7 @@
         methods: {
             create: function () {
                 axios
-                    .patch(`http://127.0.0.1:8000/api/notes/${this.$route.params.id}/`,
+                    .patch(`api/notes/${this.$route.params.id}/`,
                         {
                             name: this.note.name,
                             text: this.note.text,

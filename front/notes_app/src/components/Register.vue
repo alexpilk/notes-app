@@ -76,12 +76,12 @@
                     return;
                 }
                 axios
-                    .post(`http://127.0.0.1:8000/api/accounts/register/`,
+                    .post(`api/accounts/register/`,
                         this.user
                     )
                     .then(response => {
                         axios
-                            .post(`http://127.0.0.1:8000/api/accounts/login/`,
+                            .post(`api/accounts/login/`,
                                 {
                                     login: this.user.username,
                                     password: this.user.password

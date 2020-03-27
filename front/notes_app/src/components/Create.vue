@@ -62,7 +62,7 @@
         methods: {
             create: function () {
                 axios
-                    .post('http://127.0.0.1:8000/api/notes/',
+                    .post('api/notes/',
                         {
                             name: this.note.name,
                             text: this.note.text,
