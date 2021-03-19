@@ -4,35 +4,80 @@
 #
 #    pip-compile code/requirements.in
 #
-amqp==2.5.2               # via kombu
-asgiref==3.2.5            # via django
-attrs==19.3.0             # via pytest
-billiard==3.6.3.0         # via celery
-celery==4.4.2             # via -r code/requirements.in
-django-cors-headers==3.2.1  # via -r code/requirements.in
-django-rest-framework==0.1.0  # via -r code/requirements.in
-django-rest-registration==0.5.4  # via -r code/requirements.in
-django==3.0.4             # via -r code/requirements.in, django-cors-headers, django-rest-registration, djangorestframework
-djangorestframework==3.11.0  # via django-rest-framework, django-rest-registration
-entrypoints==0.3          # via flake8
-flake8==3.7.9             # via pytest-flake8
-kombu==4.6.8              # via celery
-mccabe==0.6.1             # via flake8
-more-itertools==8.2.0     # via pytest
-packaging==20.3           # via pytest
-pluggy==0.13.1            # via pytest
-psycopg2==2.8.4           # via -r code/requirements.in
-py==1.8.1                 # via pytest
-pycodestyle==2.5.0        # via flake8
-pyflakes==2.1.1           # via flake8
-pyparsing==2.4.6          # via packaging
-pytest-django==3.8.0      # via -r code/requirements.in
-pytest-flake8==1.0.4      # via -r code/requirements.in
-pytest==5.4.1             # via -r code/requirements.in, pytest-django, pytest-flake8
-pytz==2019.3              # via celery, django
-redis==3.4.1              # via -r code/requirements.in
-six==1.14.0               # via packaging
-sqlparse==0.3.1           # via django
-typing==3.7.4.1           # via django-rest-registration
-vine==1.3.0               # via amqp, celery
-wcwidth==0.1.9            # via pytest
+amqp==2.5.2
+    # via kombu
+asgiref==3.2.5
+    # via django
+attrs==19.3.0
+    # via pytest
+billiard==3.6.3.0
+    # via celery
+celery==4.4.2
+    # via -r requirements.in
+django-cors-headers==3.2.1
+    # via -r requirements.in
+django-rest-framework==0.1.0
+    # via -r requirements.in
+django-rest-registration==0.5.4
+    # via -r requirements.in
+django==3.0.4
+    # via
+    #   -r requirements.in
+    #   django-cors-headers
+    #   django-rest-registration
+    #   djangorestframework
+djangorestframework==3.11.2
+    # via
+    #   django-rest-framework
+    #   django-rest-registration
+entrypoints==0.3
+    # via flake8
+flake8==3.7.9
+    # via pytest-flake8
+kombu==4.6.8
+    # via celery
+mccabe==0.6.1
+    # via flake8
+more-itertools==8.2.0
+    # via pytest
+packaging==20.3
+    # via pytest
+pluggy==0.13.1
+    # via pytest
+psycopg2==2.8.4
+    # via -r requirements.in
+py==1.8.1
+    # via pytest
+pycodestyle==2.5.0
+    # via flake8
+pyflakes==2.1.1
+    # via flake8
+pyparsing==2.4.6
+    # via packaging
+pytest-django==3.8.0
+    # via -r requirements.in
+pytest-flake8==1.0.4
+    # via -r requirements.in
+pytest==5.4.1
+    # via
+    #   -r requirements.in
+    #   pytest-django
+    #   pytest-flake8
+pytz==2019.3
+    # via
+    #   celery
+    #   django
+redis==3.4.1
+    # via -r requirements.in
+six==1.14.0
+    # via packaging
+sqlparse==0.3.1
+    # via django
+typing==3.7.4.1
+    # via django-rest-registration
+vine==1.3.0
+    # via
+    #   amqp
+    #   celery
+wcwidth==0.1.9
+    # via pytest
